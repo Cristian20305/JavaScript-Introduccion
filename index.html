@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        #display {border:  2px solid red;}
+    </style>
     
 </head>
 <body>
@@ -30,6 +33,14 @@
     <button onclick="calculaAreaTriangulo()">
         Calcular Area Triangulo
     </button>
+    <button onclick="calcularPrecioConIva()">
+            Precio con Iva 
+    </button>
+    <h2>Calcualo del iva de un producto</h2>
+    precio sin iva <input type="number" id="precio-sin-iva" value="100">
+    Tipo <input type="number" max="3" min="1" id="tipo" value="3">
+    <button onclick="calculaPrecioConIvaFormulario()">Calculo precio con iba</button>
+    <p id="display"></p>
     <script>
         function suma(){
         alert("Bienvenido a mi página");
@@ -116,16 +127,58 @@
             alert("El area es "+ area);
             
         }
-
-
-
-
-
         function calculaAreaTriangulo(){
             let h = Number(prompt("Dime la altura del triangulo"));
             let b = Number(prompt("Dime la base del triangulo"));
             areaTriangulo(b,h);
         }
+        function calculaPrecioConIvaFormulario(){
+                let precioSinIva= document.getElementById("precio-sin-iva")
+                let precioSinIvaValor= precioSinIva.value
+                let tipoValor= document.getElementById("tipo").value
+                let precioIva=precioConIva(precioSinIvaValor,tipoValor)
+                let display = document.getElementById("display")
+                display.innerHTML = ("El precio con iva es " +precioIva)
+
+        }
+        function calcularPrecioConIva(){
+            let precio=prompt("Dime el precio sin Iva")
+            let tipo=prompt("Dime el tipo de de IVA (1,2,3)")
+            let precioIva=precioConIva(precio,tipo)
+            alert("Precio Con Iva " +precioIva)
+            if(puedePagarEfectivo(precioIva)){
+                alert("Puede pagar en efectivo ")
+            } else {
+                alert("No puede pagar en efectivo ")
+            }
+
+
+        }
+                /*
+                tipo1 5%
+                tipo2 10%
+                tipo3 21%
+                */
+
+        function precioConIva(precioSinIva,tipo){
+            if (tipo==1){
+                return precioSinIva*1.05
+            } if (tipo==2){
+                return precioSinIva*1.10
+            } if (tipo==3){
+                return precioSinIva*1.21
+            }
+
+
+        }
+        function puedePagarEfectivo(cantidad){
+
+            if(cantidad<2000){
+            return true
+            } else 
+            { return false}
+        }
+        
 
 
         
