@@ -6,6 +6,8 @@
     <title>Document</title>
     <style>
         #display {border:  2px solid red;}
+        #display1 {border:  2px solid red;}
+
     </style>
     
 </head>
@@ -36,11 +38,24 @@
     <button onclick="calcularPrecioConIva()">
             Precio con Iva 
     </button>
+    <button onclick="calculaPosicion()">
+        MRU 
+    </button>
     <h2>Calcualo del iva de un producto</h2>
     precio sin iva <input type="number" id="precio-sin-iva" value="100">
     Tipo <input type="number" max="3" min="1" id="tipo" value="3">
     <button onclick="calculaPrecioConIvaFormulario()">Calculo precio con iba</button>
     <p id="display"></p>
+
+    <h1>Formulario Posicion</h1>
+    <label for="aceleracion">Aceleracion</label><input type="number" id="aceleracion">
+
+    <label for="tiempo">Tiempo</label><input type="number" id="tiempo">
+
+    <button onclick="calculaPosicionFormulario()">Calcular Posicion(x)</button>
+    <div id="display1"></div>
+
+
     <script>
         function suma(){
         alert("Bienvenido a mi página");
@@ -178,7 +193,38 @@
             } else 
             { return false}
         }
-        
+        function calculoPosicionMRUA(a,t){
+
+            posicion=a*(Math.pow(t,2))/2
+            return posicion
+        }
+        function calculaPosicion(){
+            let aceleracion=prompt("Dime la aceleracion")
+            let tiempo=prompt("Dime el tiempo")
+            let posicion=calculoPosicionMRUA(aceleracion,tiempo)
+            alert("La posicion X es " +posicion+ "metros" +aceleracionAtmosfera(posicion))
+
+        }
+        function calculaPosicionFormulario(){
+            let aceleracion=document.getElementById("aceleracion").value
+            let tiempo=document.getElementById("tiempo").value
+            let posicion=calculoPosicionMRUA(aceleracion,tiempo)
+            let display1=document.getElementById("display1")
+            display1.innerHTML="La posicion X es " +posicion+ " metros "
+
+
+        }
+
+        function aceleracionAtmosfera(x){
+
+            if(x>=10000){
+                return "Alcanza estratosfera"
+            } else {
+                return "No Alcanza estratosfera"
+            }
+
+        }
+
 
 
         
