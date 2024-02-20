@@ -41,6 +41,7 @@
     <button onclick="calculaPosicion()">
         MRU 
     </button>
+
     <h2>Calcualo del iva de un producto</h2>
     precio sin iva <input type="number" id="precio-sin-iva" value="100">
     Tipo <input type="number" max="3" min="1" id="tipo" value="3">
@@ -54,6 +55,35 @@
 
     <button onclick="calculaPosicionFormulario()">Calcular Posicion(x)</button>
     <div id="display1"></div>
+
+    <p></p><h1>9 Ejercicios </h1>
+    <p></p><h2>9.1.1 Datos Ingresados</h2>
+    <table border="1" id="tablaDatos">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+      </tr>
+      <tr>
+        <th id="usuario1"></th>
+        <th id="email1"></th>
+      </tr>
+    </table>
+    <p></p><button onclick="CargarNombresTabla()">
+        Pedir Datos
+    </button>
+    <p><h2>9.1.2 Mostrar Nota</h2></p>
+    <button onclick="MostrarNota()">
+        Nota 
+    </button>
+    <p><h2>9.1.3 Leyenda de Numeros</h2></p>
+    <button onclick="leyendaNumeros()">
+        Numeros Menor 10 
+    </button>
+    <p><h2>9.1.4 Promedio</h2></p>
+    <button onclick="PromedioTresNotas()">
+        Promedio Tres Notas
+    </button>
+
 
 
     <script>
@@ -224,6 +254,87 @@
             }
 
         }
+        /*
+        9.1.1 Confeccionar un programa que permita cargar el nombre de un usuario y su mail por teclado.
+        Mostrar posteriormente los datos en la página HTML como una tabla.
+        */
+        function CargarNombresTabla(){
+            let nombre1=prompt("Dime tu usuario")
+            let email1=prompt("Dime tu email")
+            let resultado=document.getElementById("usuario1")
+            let resultadocorreo=document.getElementById("email1")
+
+            resultado.innerHTML=nombre1
+            resultadocorreo.innerHTML=email1
+        }
+
+        /*9.1.2 Confeccionar un programa que pida una nota (número). Muestra y la calificación según la nota:
+
+                0-3: Muy deficiente
+                3-5: Insuficiente
+                5-6: Suficiente
+                6-7: Bien
+                7-9: Notable
+                9-10: Sobresaliente
+        */
+        function MostrarNota(){
+            let nota1=prompt("Dime tu nota")
+            if(nota1 >=0 && nota1 <3){
+                alert("Muy deficiente")
+            } if(nota1 >=3 && nota1 <5){
+                alert("Insuficiente")
+            } if(nota1>=5 && nota1 <6){
+                alert("Suficiente")
+            } if(nota1 >=6 && nota1<7){
+                alert("Bien")
+            } if(nota1 >=7 && nota1<9){
+                alert("Notable")
+            } if (nota1 >=9 && nota1<=10){
+                alert("Sobresaliente")
+            }
+
+        }
+        /*9.1.3 Se ingresan por teclado tres números, si al menos uno de los valores ingresados es menores a 10, 
+        imprimir en la página la leyenda "Alguno de los números es menor a diez"*/
+
+        function leyendaNumeros(){
+            let numero1=prompt("Dime el primer numero")
+            let numero2=prompt("Dime el segundo numero")
+            let numero3=prompt("Dime el tercer numero")
+            if (numero1 <10 || numero2 <10 || numero3 <10){
+                alert("Alguno de los números es menor a 10")
+            } else {
+                alert("No hay ningun numero menor a 10")
+            }
+
+        }
+        /*9.1.4 Se ingresan tres notas de un alumno, si el promedio es mayor o igual a 5 mostrar el mensaje
+        &#39;Promocionado&#39;. En caso contrario ‘No promociona’. Tener en cuenta que para obtener el
+        promedio debemos operar suma=nota1+nota2+nota3; y luego hacer promedio=suma/3;
+
+        Cuando cargamos una nota y queremos convertir inmediatamente el valor ingresado a entero
+        podemos hacer:
+        nota1=prompt(&#39;Ingrese primer nota:&#39;,&#39;&#39;);
+        nota1=parseInt(nota1);*/
+
+        function PromedioTresNotas(){
+            let not1=Number(prompt("Dime el primer numero"))
+            let not2=Number(prompt("Dime el segundo numero"))
+            let not3=Number(prompt("Dime el tercer numero"))
+            
+            let suma=(not1+not2+not3)/3
+
+            if(suma>=5){
+                let resultado1=alert("Promociona")
+            } else{
+                let resultado1=alert("No promociona")
+            }
+    
+
+        }
+
+
+
 
 
 
